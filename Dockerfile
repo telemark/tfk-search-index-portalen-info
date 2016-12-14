@@ -1,11 +1,11 @@
 ###########################################################
 #
-# Dockerfile for tfk-search-index-ansatte
+# Dockerfile for tfk-search-index-portalen-info
 #
 ###########################################################
 
-# Setting the base to nodejs 4.4.3
-FROM mhart/alpine-node:4.4.3
+# Setting the base to nodejs 4.7.0
+FROM mhart/alpine-node:4.7.0
 
 # Maintainer
 MAINTAINER Geir Gåsodden
@@ -23,13 +23,6 @@ WORKDIR "/src"
 
 # Install dependencies
 RUN npm install --production
-
-# Env variables
-ENV JWT_KEY "Louie Louie, oh no, I got to go"
-ENV SEARCH_SERVICE_URL https://search.service.com/api
-ENV SEARCH_SERVICE_INDEX portaleninfo
-ENV SEARCH_SERVICE_INDEX_TYPE article
-ENV SOURCE_URL "http://www.portalen.com/artikler.json"
 
 # Startup
 ENTRYPOINT node index.js
