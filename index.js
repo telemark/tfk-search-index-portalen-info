@@ -1,10 +1,11 @@
 'use strict'
 
-var Wreck = require('wreck')
-var config = require('./config')
-var addIndex = require('./lib/add-index')
-var deleteIndex = require('./lib/delete-index')
-var wreckOptions = {
+const Wreck = require('wreck')
+const config = require('./config')
+const addIndex = require('./lib/add-index')
+const deleteIndex = require('./lib/delete-index')
+const cleanUpArticle = require('./lib/cleanup-article')
+const wreckOptions = {
   json: true
 }
 
@@ -13,9 +14,9 @@ function indexArticles (results) {
 
   function next () {
     if (list.length > 0) {
-      var article = list.pop()
-
-      addIndex(article, function (err, payload) {
+      const article = list.pop()
+      const cleanArticle = cleanUpArticle(article)
+      addIndex(cleanArticle, (err, payload) => {
         if (err) {
           console.error(err)
         } else {
@@ -39,7 +40,7 @@ function handleArticles (error, repsonse, payload) {
   }
 }
 
-deleteIndex(function (error, payload) {
+deleteIndex((error, payload) => {
   if (error) {
     console.error(error)
   } else {
