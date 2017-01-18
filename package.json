@@ -41,7 +41,7 @@
     "tap": "9.0.2"
   },
   "dependencies": {
-    "striptags": "2.1.1",
+    "striptags": "2.2.0",
     "tfk-generate-jwt": "1.0.9",
     "wreck": "10.0.0"
   }
