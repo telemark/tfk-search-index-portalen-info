@@ -35,13 +35,13 @@
     "url": "http://github.com/telemark/tfk-search-index-portalen-info/issues"
   },
   "devDependencies": {
-    "coveralls": "2.11.15",
+    "coveralls": "2.11.16",
     "nsp": "2.6.2",
     "standard": "8.6.0",
-    "tap": "10.0.0"
+    "tap": "10.0.2"
   },
   "dependencies": {
-    "striptags": "3.0.0",
+    "striptags": "3.0.1",
     "tfk-generate-jwt": "1.0.10",
     "wreck": "10.0.0"
   }
