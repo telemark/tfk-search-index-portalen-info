@@ -43,6 +43,6 @@
   "dependencies": {
     "striptags": "3.0.1",
     "tfk-generate-jwt": "1.0.16",
-    "wreck": "10.0.0"
+    "wreck": "11.0.0"
   }
 }
