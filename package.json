@@ -1,6 +1,6 @@
 {
   "name": "tfk-search-index-portalen-info",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Indekserer portalens infosider",
   "license": "MIT",
   "author": {
@@ -35,7 +35,7 @@
     "url": "http://github.com/telemark/tfk-search-index-portalen-info/issues"
   },
   "devDependencies": {
-    "tap": "10.4.0",
+    "tap": "10.3.3",
     "coveralls": "2.13.1",
     "nsp": "2.6.3",
     "standard": "10.0.2"
