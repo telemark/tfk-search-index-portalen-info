@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   JWT_KEY: process.env.JWT_KEY || 'Louie Louie, oh no, I got to go',
   SEARCH_SERVICE_URL: process.env.SEARCH_SERVICE_URL || 'https://search.service.com/api',
