@@ -44,7 +44,7 @@ async function init () {
   const { data: res } = await axios.get(SOURCE_URL)
   if (!res.data || res.data.length === 0) throw Error('No data found')
   const cleaned = res.data.map(c => clean(c))
-  await Promise.all(cleaned.forEach(async obj => await addIndex(obj)))
+  await Promise.all(cleaned.forEach(async obj => addIndex(obj)))
 }
 
 deleteIndex()
