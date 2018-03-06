@@ -3,6 +3,7 @@
   "version": "1.0.31",
   "description": "Indekserer portalens infosider",
   "license": "MIT",
+  "private": true,
   "author": {
     "name": "Geir Gåsodden",
     "email": "geir.gasodden@pythonia.no",
