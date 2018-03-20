@@ -11,8 +11,9 @@ if (env) {
 const axios = require('axios')
 const striptags = require('striptags')
 const generateToken = require('tfk-generate-jwt')
+const deleteIndex = require('./lib/delete-index')
+const getArticles = require('./lib/get-articles')
 const addIndexUrl = `${process.env.SEARCH_SERVICE_URL}/${process.env.SEARCH_SERVICE_INDEX}/${process.env.SEARCH_SERVICE_INDEX_TYPE}`
-const rmIndexUrl = `${process.env.SEARCH_SERVICE_URL}/${process.env.SEARCH_SERVICE_INDEX}`
 
 function clean (article) {
   let clean = {}
@@ -40,29 +41,27 @@ async function addIndex (payload) {
   }
 }
 
-async function deleteIndex () {
-  const token = generateToken({key: process.env.JWT_KEY, payload: {system: 'tfk-search-index-portalen-info'}})
-  axios.defaults.headers.common['Authorization'] = token
-  try {
-    await axios.delete(rmIndexUrl)
-    console.log('index deleted')
-  } catch (err) {
-    console.log('deleted?')
-    throw err
+async function indexArticles () {
+  const articles = await getArticles(process.env.SOURCE_URL)
+  if (articles.length === 0) {
+    throw Error('No data found')
   }
-}
-
-async function init () {
-  const { data: res } = await axios.get(process.env.SOURCE_URL)
-  if (!res.data || res.data.length === 0) throw Error('No data found')
-  console.log(`${res.data.length} articles to index`)
+  console.log(`${articles.length} articles to index`)
   await deleteIndex()
-  const cleaned = res.data.map(c => clean(c))
-  await Promise.all(cleaned.forEach(async obj => addIndex(obj)))
-  console.log('All indexes updated')
+  let cleaned = articles.map(c => clean(c))
+  const next = async () => {
+    if (cleaned.length > 0) {
+      const article = cleaned.pop()
+      await addIndex(article)
+      await next()
+    } else {
+      console.log('All indexes updated')
+    }
+  }
+  await next()
   return {success: true}
 }
 
-init()
+indexArticles()
   .then(console.log)
   .catch(console.error)
