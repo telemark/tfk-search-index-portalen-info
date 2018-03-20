@@ -11,7 +11,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": ">=8.9.4"
+    "node": ">=8.10.0"
   },
   "scripts": {
     "start": "node index.js",
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "axios": "0.18.0",
+    "dotenv": "5.0.1",
     "striptags": "3.1.1",
     "tfk-generate-jwt": "2.0.0"
   }
