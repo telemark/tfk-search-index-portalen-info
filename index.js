@@ -15,17 +15,12 @@ const deleteIndex = require('./lib/delete-index')
 const getArticles = require('./lib/get-articles')
 const addIndexUrl = `${process.env.SEARCH_SERVICE_URL}/${process.env.SEARCH_SERVICE_INDEX}/${process.env.SEARCH_SERVICE_INDEX_TYPE}`
 
-function clean (article) {
-  let clean = {}
-  Object.keys(article).forEach(dataKey => {
-    clean[dataKey] = Array.isArray(article[dataKey]) ? article[dataKey] : striptags(article[dataKey])
-  })
+function repackArticle (post) {
   return {
-    title: clean.title,
-    summary: clean.description,
-    tags: clean.tags,
-    url: clean.url,
-    matrixData: clean.jsonUrl
+    title: post && post.title ? post.title.rendered : '',
+    summary: post && post.excerpt ? striptags(post.excerpt.rendered) : '',
+    url: post.link,
+    content: post && post.content ? striptags(post.content.rendered) : ''
   }
 }
 
@@ -48,10 +43,10 @@ async function indexArticles () {
   }
   console.log(`${articles.length} articles to index`)
   await deleteIndex()
-  let cleaned = articles.map(c => clean(c))
+  let repacked = articles.map(repackArticle)
   const next = async () => {
-    if (cleaned.length > 0) {
-      const article = cleaned.pop()
+    if (repacked.length > 0) {
+      const article = repacked.pop()
       await addIndex(article)
       await next()
     } else {

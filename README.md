@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/telemark/tfk-search-index-portalen-info.svg?branch=master)](https://travis-ci.org/telemark/tfk-search-index-portalen-info)
 [![Coverage Status](https://coveralls.io/repos/telemark/tfk-search-index-portalen-info/badge.svg?branch=master&service=github)](https://coveralls.io/github/telemark/tfk-search-index-portalen-info?branch=master)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-[![Greenkeeper badge](https://badges.greenkeeper.io/telemark/tfk-search-index-portalen-info.svg)](https://greenkeeper.io/)
 
 # tfk-search-index-ansatte
 
