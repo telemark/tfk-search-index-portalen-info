@@ -1,6 +1,6 @@
 {
   "name": "tfk-search-index-portalen-info",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Indekserer portalens infosider",
   "license": "MIT",
   "private": true,

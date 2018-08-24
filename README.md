@@ -35,3 +35,7 @@ $ docker run --env-file=docker.env --rm tfk-search-index-portalen-info
 ```
 
 This will spin up a container. Do the job. Shut it down and remove it.
+
+## License
+
+[MIT](LICENSE)
