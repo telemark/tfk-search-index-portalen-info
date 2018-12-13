@@ -4,7 +4,7 @@ if (env) {
   const envFilePath = path.resolve(process.cwd(), env)
   console.log('loading environment')
   console.log(env)
-  require('dotenv').config({path: envFilePath})
+  require('dotenv').config({ path: envFilePath })
 } else {
   console.log('no environment loaded')
 }
@@ -25,7 +25,7 @@ function repackArticle (post) {
 }
 
 async function addIndex (payload) {
-  const token = generateToken({key: process.env.JWT_KEY, payload: {system: 'tfk-search-index-portalen-info'}})
+  const token = generateToken({ key: process.env.JWT_KEY, payload: { system: 'tfk-search-index-portalen-info' } })
   axios.defaults.headers.common['Authorization'] = token
   try {
     await axios.post(addIndexUrl, payload)
@@ -54,7 +54,7 @@ async function indexArticles () {
     }
   }
   await next()
-  return {success: true}
+  return { success: true }
 }
 
 indexArticles()
