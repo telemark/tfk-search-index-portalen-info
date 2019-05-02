@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "axios": "0.18.0",
-    "dotenv": "7.0.0",
+    "dotenv": "8.0.0",
     "striptags": "3.1.1",
     "tfk-generate-jwt": "2.0.1",
     "winston": "2.4.4",
