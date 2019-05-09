@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/telemark/tfk-search-index-portalen-info#readme",
   "devDependencies": {
-    "tap": "13.1.3",
+    "tap": "13.1.6",
     "coveralls": "3.0.3",
     "standard": "12.0.1"
   },
